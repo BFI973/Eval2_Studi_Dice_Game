@@ -1,0 +1,20 @@
+html {
+  width: 100%;
+  height: 100%;
+  border: 1.5rem solid #ff5722;
+}
+
+body {
+  background: linear-gradient(to right, #d2dbdf 50%, #f1f5f5 50%);
+  color: #ff5722;
+  font-family: "Lato", sans-serif;
+}
+
+#globalPlayer1,
+#globalPlayer2 {
+  font-size: 8rem;
+}
+
+#player2Round {
+  display: none;
+}
