@@ -72,7 +72,7 @@
           class="col d-flex align-items-center justify-content-center"
           id="diceResult"
         >
-          <img src="Images/Alea_1.png" alt="Face un du dé" />
+          <img id="diceImage" src="Images/Alea_1.png" alt="Face un du dé" />
         </div>
 
         <!-- Player 2 -->
@@ -99,12 +99,12 @@
         <!-- Player 1 current score -->
         <div class="col-3 fs-3 border border-danger">
           Current
-          <div>0</div>
+          <div id="roundPlayer1">0</div>
         </div>
 
         <div class="col-3 row">
           <!-- Dice roll button -->
-          <button type="button" class="btn fs-3" id="roll">
+          <button type="button" class="btn fs-3" id="diceRoll">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="26"
