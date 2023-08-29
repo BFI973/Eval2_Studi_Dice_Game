@@ -10,16 +10,20 @@ let roundPlayer2 = document.getElementById("roundPlayer2");
 let player1Round = document.getElementById("player1Round");
 let player2Round = document.getElementById("player2Round");
 
+//when pressed the button ROLL DICE, the function calls the function throwDice()
 diceRoll.addEventListener("click", (event) => {
   event.preventDefault();
   throwDice();
 });
 
+//This function randomly draws a number between 1 and 6 then displays it
+//It calls the function playerRound() in order to check who owns the trick
 const throwDice = () => {
   let diceNumber = Math.floor(Math.random() * 6 + 1);
 
-  palyerRound(diceNumber);
+  playerRound(diceNumber);
 
+  //Displays the face of the dice drawn
   switch (diceNumber) {
     case 1:
       diceImage.src = "Images/Alea_1.png";
@@ -48,7 +52,9 @@ const throwDice = () => {
   }
 };
 
-let palyerRound = (diceNumber) => {
+//This function checks who must play, if the number of the dice is equal to 1 then we change player
+//sinon on ajoute les point au joueur actuel
+let playerRound = (diceNumber) => {
   if (getComputedStyle(player1Round).getPropertyValue("display") === "inline") {
     if (diceNumber === 1) {
       let round = 0;
@@ -74,6 +80,7 @@ let palyerRound = (diceNumber) => {
   }
 };
 
+//If you press the button, you add the cumulative sum (ROUND) to the total sum (GLOBAL) and we pass
 hold.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -85,9 +92,7 @@ hold.addEventListener("click", (event) => {
     roundPlayer1.innerHTML = "0";
     player1Round.style.display = "none";
     player2Round.style.display = "inline";
-  } else if (
-    getComputedStyle(player2Round).getPropertyValue("display") === "inline"
-  ) {
+  } else if (getComputedStyle(player2Round).getPropertyValue("display") === "inline") {
     let roundPoint = parseInt(roundPlayer2.innerHTML);
     let totalPoint = parseInt(globalPlayer2.innerHTML);
     totalPoint += roundPoint;
@@ -97,6 +102,8 @@ hold.addEventListener("click", (event) => {
     player1Round.style.display = "inline";
   }
 
+  //If a player has a total >= 100, then that player has won
+  //and we ask if the user wants to play again
   if (parseInt(globalPlayer1.innerHTML) >= 100) {
     alert("Félicitation, le joueur 1 a gagné !!!!");
     let replay = confirm("Voulez vous rejouer ?");
@@ -118,6 +125,7 @@ hold.addEventListener("click", (event) => {
   }
 });
 
+//If the user wants to start a new game or if he wants to play again, this function reloads the page
 const newPart = () => {
   let party = confirm("Une nouvelle partie remet les compteurs à zero !");
 
